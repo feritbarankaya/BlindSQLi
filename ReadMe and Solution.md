@@ -27,6 +27,7 @@ Blind SQLi
 Zaafiyet Parametresi - Cookie
 
 Hedefler:
+
 1-) Admin şifresini numaralandır.
 2-) Admin olarak giriş yap.
 
@@ -35,6 +36,7 @@ Hedefler:
 _______________________________________________________________________________________________________________________________________________________________________
 
 Analiz:
+
 1-) Zaafiyetin doğru olup olmadığının kontrolü.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl'
@@ -89,6 +91,7 @@ a1g2k2v3f  j  r  a  w  y  z  y  6  t  l  9
 
 
 Goals:
+
 1-) Number the admin password.
 2-) Login as admin.
 
@@ -98,6 +101,7 @@ Every query we get a "Welcome back" result throughout the solution means that we
 _______________________________________________________________________________________________________________________________________________________________________
 
 Analysis:
+
 1-) Checking whether the vulnerability is correct.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl'
