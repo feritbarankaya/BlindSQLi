@@ -29,6 +29,7 @@ Zaafiyet Parametresi - Cookie
 Hedefler:
 
 1-) Admin şifresini numaralandır.
+
 2-) Admin olarak giriş yap.
 
 Öncelikle bir zaafiyetin tespiti ardından sömürülmesi gerektiğini biliyoruz. Bu sebeple ilk adımımız zaafiyet bulunduğu belirtilen Cookie üzerinden doğru/yanlış sorgular yaparak zaafiyetin varlığından emin olmamız gerekmekte.
@@ -93,6 +94,7 @@ a1g2k2v3f  j  r  a  w  y  z  y  6  t  l  9
 Goals:
 
 1-) Number the admin password.
+
 2-) Login as admin.
 
 We know that first of all, a vulnerability must be detected and then exploited. For this reason, our first step is to make sure that the vulnerability exists by making correct/false queries on the Cookie, which is stated to be vulnerable.
